@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #89f7fe, #66a6ff);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+canvas {
+  background: linear-gradient(to bottom, #dddddd, #dfdfdf);
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 90vw;
+  height: 80vh;
+  max-width: 450px;
+  max-height: 600px;
+}
+
+#gameOver {
+  position: absolute;
+  width: 60vw;
+  max-width: 220px;
+  height: auto;
+  padding: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  display: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#gameOver img {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+}
+
+#gameOver h2 {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #ffeb3b;
+  word-wrap: break-word;
+}
+
+#gameOver button {
+  margin-top: 12px;
+  padding: 8px 15px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+#gameOver button:hover {
+  background-color: #ffd633;
+}
+
+@media (max-width: 600px) {
+  canvas {
+    width: 95vw;
+    height: 75vh;
+  }
+
+  #gameOver {
+    width: 70vw;
+  }
+
+  #gameOver img {
+    width: 60px;
+    height: 60px;
+  }
+
+  #gameOver h2 {
+    font-size: 14px;
+  }
+
+  #gameOver button {
+    font-size: 14px;
+    padding: 7px 13px;
+  }
+}
