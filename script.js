@@ -11,15 +11,15 @@ const jumpSound = new Audio("maka.mp3");
 const gameOverSound = new Audio("gameover.mp3");
 const bgMusic = new Audio("music.mp3");
 bgMusic.loop = true;
-bgMusic.volume = 0.3;
+bgMusic.volume = 0.9;
 
 let bird = {
   x: 70,
   y: 150,
-  width: 40,
-  height: 40,
-  gravity: 0.25,  // ↓ slower falling speed
-  lift: -6,       // ↑ slightly smaller jump
+  width: 30,
+  height: 30,
+  gravity: 0.15,
+  lift: -4,
   velocity: 0
 };
 
@@ -27,8 +27,8 @@ let pipes = [];
 let score = 0;
 let gameOver = false;
 let frame = 0;
-let gap = 190; // larger vertical gap between pipes
-let gameSpeed = 1.2; // ↓ slower pipe movement
+let gap = 190;
+let gameSpeed = 1.2;
 
 function drawBird() {
   ctx.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
@@ -61,7 +61,7 @@ function update() {
 
   if (bird.y + bird.height >= canvas.height) endGame();
 
-  if (frame % 180 === 0) { // slower new pipe spawn
+  if (frame % 180 === 0) {
     let pipeHeight = Math.random() * (canvas.height / 2);
     pipes.push({
       x: canvas.width,
@@ -82,8 +82,7 @@ function update() {
     if (
       bird.x < pipe.x + pipe.width &&
       bird.x + bird.width > pipe.x &&
-      (bird.y < pipe.height ||
-        bird.y + bird.height > pipe.height + gap)
+      (bird.y < pipe.height || bird.y + bird.height > pipe.height + gap)
     ) {
       endGame();
     }
@@ -113,13 +112,24 @@ function gameLoop() {
   if (!gameOver) requestAnimationFrame(gameLoop);
 }
 
-document.addEventListener("keydown", () => {
+// ✅ Works on both PC & mobile:
+function jump() {
   if (!gameOver) {
     bird.velocity = bird.lift;
     jumpSound.currentTime = 0;
     jumpSound.play();
   }
+}
+
+// Keyboard (PC)
+document.addEventListener("keydown", jump);
+
+// Touch & Click (Mobile + PC)
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // stop scrolling on mobile
+  jump();
 });
+canvas.addEventListener("mousedown", jump);
 
 document.getElementById("restartBtn")?.addEventListener("click", restartGame);
 
