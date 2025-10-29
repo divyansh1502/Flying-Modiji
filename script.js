@@ -27,7 +27,7 @@ let pipes = [];
 let score = 0;
 let gameOver = false;
 let frame = 0;
-let gap = 190;
+let gap = 140;
 let gameSpeed = 1.2;
 
 function drawBird() {
@@ -61,7 +61,7 @@ function update() {
 
   if (bird.y + bird.height >= canvas.height) endGame();
 
-  if (frame % 180 === 0) {
+  if (frame % 140 === 0) {
     let pipeHeight = Math.random() * (canvas.height / 2);
     pipes.push({
       x: canvas.width,
