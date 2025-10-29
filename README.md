@@ -3,7 +3,7 @@
 A funny little browser game inspired by **Flappy Bird**, featuring **Modiji** as the flying hero dodging **Rahul Gandhi** pipes.  
 Built entirely with **HTML, CSS, and JavaScript** — no libraries, just pure fun!
 
-🎮 **Play it here:** [👉 Game Preview Link](https://your-preview-link.com)
+🎮 **Play it here:** [👉 Game Preview Link](https://divyansh1502.github.io/Flying-Modiji/)
 
 ---
 
